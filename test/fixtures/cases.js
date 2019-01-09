@@ -1,7 +1,6 @@
 'use strict'
 
 const Bignum = require('bignumber.js')
-const { URL } = require('iso-url')
 const expect = require('chai').expect
 
 const cbor = require('../../')
@@ -170,13 +169,6 @@ exports.good = [
     1a              -- Positive number, next 4 bytes
       514b67b0      -- 1363896240
 0xc11a514b67b0`],
-
-  [new URL('http://www.example.com'), '32("http://www.example.com/")', `
-  d8                --  next 1 byte
-    20              -- Tag #32
-      77            -- String, length: 23
-        687474703a2f2f7777772e6578616d706c652e636f6d2f -- "http://www.example.com/"
-0xd82077687474703a2f2f7777772e6578616d706c652e636f6d2f`],
   [Buffer.from(''), "h''", `
   40                -- Bytes, length: 0
 0x40`],
