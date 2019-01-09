@@ -8,7 +8,6 @@ const utils = require('./utils')
 const c = require('./constants')
 const Simple = require('./simple')
 const Tagged = require('./tagged')
-const { URL } = require('iso-url')
 
 /**
  * Transform binary cbor data into JavaScript objects.
@@ -49,7 +48,6 @@ class Decoder {
         // const v = new Uint8Array(val)
         return c.TWO.pow(v[0]).times(v[1])
       },
-      32: (val) => new URL(val),
       35: (val) => new RegExp(val)
     }, opts.tags)
 
